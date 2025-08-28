@@ -1,4 +1,4 @@
-Ad_ID,Campaign_Name,Clicks,Impressions,Cost,Leads,Conversions,Conversion Rate,Sale_Amount,Ad_Date,Location,Device,Keyword
+Ad_ID,Campaign_Name,Clicks,Impressions,Cost,Leads,Conversions,Conversion_Rate,Sale_Amount,Ad_Date,Location,Device,Keyword
 A1000,DataAnalyticsCourse,104.0,4498.0,$231.88,14.0,7.0,0.058,$1892,2024-11-16,hyderabad,desktop,learn data analytics
 A1001,DataAnalyticsCourse,173.0,5107.0,$216.84,10.0,8.0,0.046,$1679,20-11-2024,hyderabad,mobile,data analytics course
 A1002,Data Anlytics Corse,90.0,4544.0,$203.66,26.0,9.0,,$1624,2024/11/16,hyderabad,Desktop,data analitics online
