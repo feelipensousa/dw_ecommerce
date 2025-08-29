@@ -12,6 +12,7 @@ def generate_fake_client_data():
     """
     client_id = str(uuid.uuid4())
     fake = Faker("pt_BR")
+    cpf = fake.cpf()
     name = fake.name()
     age = random.randint(18,70)
     countries = [
@@ -28,6 +29,7 @@ def generate_fake_client_data():
         "client_id": client_id,
         "first_name": name.split(" ")[0],
         "last_name": " ".join(name.split(" ")[1:]),
+        "cpf": cpf,
         "email": name.split(" ")[1] + "@" + fake.free_email_domain(),
         "age": age,
         "country": country
