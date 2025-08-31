@@ -1,9 +1,9 @@
 import pandas as pd
 from datetime import datetime, timedelta
-from faker import Faker
 import random
 
-def generate_fake_order_data(order_id, date, product, product_id, client_id):
+
+def generate_fake_order_data(order_id: int , date: datetime, product: str, product_id: int, client_id: str) -> pd.DataFrame:
     """
     Geração de dados fictícios de vendas como Id do pedido, Quantitdade, Data do pedido, País em que foi pedido, id do produto e id do cliente.
 
@@ -46,6 +46,8 @@ if __name__ == "__main__":
 
     order_id = 0
 
+    choices_weights = [random.random() for _ in range(len(products_df))]
+    print("Pesos dos produtos: ", len(choices_weights)) 
 
     for day in range(num_days): #
         date = start_date + timedelta(days=day)
@@ -53,7 +55,7 @@ if __name__ == "__main__":
 
         for i in range(num_orders):
             order_id += 1
-            product_id = random.choice(products_df['product_id'].tolist())  # Pega um produto aleatório de todos os produtos
+            product_id = random.choices(products_df['product_id'].tolist(), weights=choices_weights, k=1)[0] # Pega um produto aleatório com peso.           
             client_id = random.choice(client_df['client_id'].tolist())  # Pega um client_id aleatório de todos os clientes
             product = products_df[products_df['product_id'] == product_id].iloc[0]['product_name']
 
