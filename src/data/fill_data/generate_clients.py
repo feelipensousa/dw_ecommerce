@@ -5,10 +5,10 @@ import uuid
 
 def generate_fake_client_data():
     """
-    Geração de dados fictícios como Id único, Primeiro Nome, Sobrenome, Idade, e País.
+    Geração de dados fictícios como Id único, cpf, Primeiro Nome, Sobrenome, Idade, e País.
 
     Returns:
-        dict: Dicionário com os dados fictícios gerados. Chaves: client_id, first_name, last_name, email, age e country
+        dict: Dicionário com os dados fictícios gerados. Chaves: client_id, cpf, first_name, last_name, email, age e country
     """
     client_id = str(uuid.uuid4())
     fake = Faker("pt_BR")
@@ -38,7 +38,7 @@ def generate_fake_client_data():
 
 if __name__ == "__main__":
     client_data = []
-    num_clients = 100000 # Geramos 100.000 clientes para nossa tabela.
+    num_clients = 50000 # Geramos 50.000 clientes para nossa tabela.
     for i in range(1, num_clients + 1):
         fake_user = generate_fake_client_data()
         client_data.append(fake_user)
