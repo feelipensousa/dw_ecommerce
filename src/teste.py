@@ -77,3 +77,9 @@ df['plataforma'] = random.choices(plataformas, weights=pesos_aleatorios, k=num_l
 distribuicao = df['plataforma'].value_counts()
 # print("\nDistribuição das plataformas na nova coluna:")
 # print(distribuicao)
+
+product_metrics_1 = pd.read_csv("src/data/Products_Metrics_Gemini1.csv", sep=',', encoding='UTF-8')
+product_metrics_2 = pd.read_csv("src/data/Products_Metrics_GPT.csv", sep=',', encoding='UTF-8')
+
+print(product_metrics_1)
+

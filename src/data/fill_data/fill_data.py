@@ -74,7 +74,9 @@ adicionar cpf na tabela clients
 #         # Aplicar variação nas métricas
 #         for col in ["clicks", "impressions", "conversions"]:
 #             if col in sampled.columns:
-#                 sampled[col] = (sampled[col] * rng.uniform(0.9, 1.1, size=len(sampled))).astype(int)
+#                 sampled[col] = sampled[col].replace([np.nan, np.inf, -np.inf], 0)
+#                 sampled[col] = (sampled[col] * rng.uniform(0.9, 1.1, size=len(sampled))).fillna(0)
+#                 sampled[col] = sampled[col].astype(int)
 
 #         # Atualizar data
 #         sampled["ad_date"] = date
@@ -101,7 +103,7 @@ adicionar cpf na tabela clients
 #     print("Data máxima:", expanded_df['ad_date'].max())
 #     print("Total de linhas:", len(expanded_df))
 
-#     expanded_df.to_csv("src/data/product_metrics_expanded.csv", index=False, encoding="UTF-8")
+#     expanded_df.to_csv("src/data/Products_Metrics_GPT.csv", index=False, encoding="UTF-8")
 
 
 # GEMINI
@@ -121,6 +123,8 @@ def generate_products_metrics_data(base_metrics_df: pd.DataFrame, products_df: p
     Returns:
         pd.DataFrame: DataFrame final de métricas de marketing.
     """
+
+    print("Iniciando geração de dados de métricas de produtos...")
     platforms = ["Facebook Ads", "Instagram Ads", "Google Ads", "LinkedIn Ads"]
     
     # Adicionamos pesos para que as plataformas não tenham a mesma chance de aparecer
@@ -138,7 +142,7 @@ def generate_products_metrics_data(base_metrics_df: pd.DataFrame, products_df: p
     base_metrics_cleaned = base_metrics_df.copy()
     
     # Remove as colunas indesejadas e adiciona as novas
-    base_metrics_cleaned.drop(['Campaign_Name', 'Sale_Amount', 'Keyword', 'Location', 'Ad_Date', 'Device'], axis=1, inplace=True)
+    base_metrics_cleaned.drop(['campaign_name', 'sale_amount', 'keyword', 'location', 'ad_date'], axis=1, inplace=True)
     base_metrics_cleaned['product_id'] = random.choices(products_df['product_id'].tolist(), weights=choices_products_weights, k=len(base_metrics_cleaned))
     base_metrics_cleaned['platform'] = random.choices(platforms, weights=choices_platforms_weights, k=len(base_metrics_cleaned))
 
@@ -152,22 +156,29 @@ def generate_products_metrics_data(base_metrics_df: pd.DataFrame, products_df: p
         daily_sample = base_metrics_cleaned.sample(n=num_records_for_day, replace=True).copy()
         
         # Adiciona a data correta para a amostra do dia
-        daily_sample['Ad_Date'] = current_date
+        daily_sample['ad_date'] = current_date
         
         # Aplica a variação aleatória às métricas
-        for col in ['Clicks', 'Impressions', 'Leads', 'Conversions', 'Cost']:
-            daily_sample[col] = daily_sample[col].apply(lambda x: x * random.uniform(0.9, 1.1))
-            daily_sample[col] = daily_sample[col].astype(int) # Converte para inteiro após o cálculo
-        
+        for col in ['clicks', 'impressions', 'leads', 'conversions']:
+            daily_sample[col] = daily_sample[col].astype(str).str.replace('$', '').str.replace(',', '')
+            daily_sample[col] = pd.to_numeric(daily_sample[col], errors='coerce')
+            daily_sample[col] = daily_sample[col].apply(lambda x: x * random.uniform(0.9, 1.1) if pd.notnull(x) else 0)
+            daily_sample[col] = daily_sample[col].astype(int)
+
+        # Processa a coluna 'cost' separadamente para manter as casas decimais
+        daily_sample['cost'] = daily_sample['cost'].astype(str).str.replace('$', '').str.replace(',', '')
+        daily_sample['cost'] = pd.to_numeric(daily_sample['cost'], errors='coerce')
+        daily_sample['cost'] = daily_sample['cost'].apply(lambda x: x * random.uniform(0.9, 1.1) if pd.notnull(x) else 0)
+        daily_sample['cost'] = daily_sample['cost'].round(2)
         # Recalcula a taxa de conversão
-        daily_sample['Conversion_Rate'] = daily_sample.apply(
-            lambda row: round(row['Conversions'] / row['Clicks'], 2) if row['Clicks'] > 0 else 0, axis=1
+        daily_sample['conversion_rate'] = daily_sample.apply(
+            lambda row: round(row['conversions'] / row['clicks'], 2) if row['clicks'] > 0 else 0, axis=1
         )
         
         # Adiciona os Ad_IDs sequencialmente
         for _, row in daily_sample.iterrows():
             ad_id += 1
-            row['Ad_ID'] = ad_id
+            row['ad_ID'] = ad_id
             metrics_data.append(row.to_dict())
 
 
@@ -185,10 +196,10 @@ if __name__ == "__main__":
     products_metrics_df = generate_products_metrics_data(product_metrics_base_df, products_df, num_days=1000)
 
     # Salve o resultado final
-    products_metrics_df.to_csv("src/data/Products_Metrics.csv", index=False)
+    products_metrics_df.to_csv("src/data/Products_Metrics_Gemini1.csv", index=False)
     
     print("Geração do DataFrame Products_Metrics concluída.")
     print(f"Total de registros gerados: {len(products_metrics_df)}")
-    print(f"Data mínima: {products_metrics_df['Ad_Date'].min()}")
-    print(f"Data máxima: {products_metrics_df['Ad_Date'].max()}")
+    print(f"Data mínima: {products_metrics_df['ad_date'].min()}")
+    print(f"Data máxima: {products_metrics_df['ad_date'].max()}")
     print("Colunas:", products_metrics_df.columns.tolist())
