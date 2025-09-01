@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     sales = []
 
-    start_date = datetime(2022, 1, 1) # As vendas começaram a partir do dia 01/01/2022
+    start_date = datetime(2022, 1, 1) # As vendas começaram a partir do dia 01/01/2022 (CONSERTAR A DATA DEVE SE INICIAR 30/11/2024 E DECRESCER 100 DIAS)
     num_days = 1000 # Quantidade de dias de pedidos
 
     order_id = 0

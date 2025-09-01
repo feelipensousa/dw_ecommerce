@@ -45,6 +45,4 @@ if __name__ == "__main__":
     print(product_metrics_df.columns)
     print("Data mínima:", product_metrics_df['ad_date'].min())
     print("Data máxima:", product_metrics_df['ad_date'].max())
-    print("quantidade média de linhas por dia")
-    avg_rows_per_day = product_metrics_df.groupby('ad_date').size().mean()
-    print(avg_rows_per_day)
+
