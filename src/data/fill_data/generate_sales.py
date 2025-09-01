@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     sales = []
 
-    start_date = datetime(2022, 1, 1) # As vendas começaram a partir do dia 01/01/2022 (CONSERTAR A DATA DEVE SE INICIAR 30/11/2024 E DECRESCER 100 DIAS)
+    start_date = datetime(2024, 11, 30) # As vendas começaram a partir do dia 01/01/2022 (CONSERTAR A DATA DEVE SE INICIAR 30/11/2024 E DECRESCER 100 DIAS)
     num_days = 1000 # Quantidade de dias de pedidos
 
     order_id = 0
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     print("Pesos dos produtos: ", len(choices_weights)) 
 
     for day in range(num_days): #
-        date = start_date + timedelta(days=day)
+        date = start_date - timedelta(days=day)
         num_orders = random.randint(250, 550) # Quantidade de pedidos no dia
 
         for i in range(num_orders):

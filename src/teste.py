@@ -40,6 +40,9 @@ Sales_data = pd.read_csv("src/data/Sales_data.csv", sep=',', encoding='utf-8') #
 # print(len(Products))
 # print(len(Clients))
 #print(len(Sales_data))
+print("Data mínima:", Sales_data['order_date'].min()) #Data mínima: 2022-01-01
+print("Data máxima:", Sales_data['order_date'].max()) # Data máxima: 2024-09-26
+
 
 # print(Products.head())
 # print("*"*20)
@@ -59,7 +62,7 @@ plataformas = ["Netflix", "Amazon Prime", "HBO Max"]
 # A soma dos pesos não precisa ser 100, pois o random.choices() usa a proporção entre eles.
 pesos_aleatorios = [random.random() for _ in plataformas]
 
-print("Pesos aleatórios gerados:", pesos_aleatorios)
+#print("Pesos aleatórios gerados:", pesos_aleatorios)
 
 # 3. Crie um DataFrame de exemplo
 # Vamos criar um DataFrame com 1000 linhas para simular um conjunto de dados.
@@ -72,5 +75,5 @@ df['plataforma'] = random.choices(plataformas, weights=pesos_aleatorios, k=num_l
 
 # 5. Verifique a distribuição para provar que a proporção é aleatória
 distribuicao = df['plataforma'].value_counts()
-print("\nDistribuição das plataformas na nova coluna:")
-print(distribuicao)
+# print("\nDistribuição das plataformas na nova coluna:")
+# print(distribuicao)
