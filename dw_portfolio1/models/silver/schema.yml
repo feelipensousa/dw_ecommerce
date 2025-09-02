@@ -1,0 +1,80 @@
+# Schema para facilitar a documentação e entendimento das tabelas da camada Silver.
+version: 2
+
+sources:
+  - name: db_ecommerce_k53u
+    schema: public
+    tables:
+
+      - name: "Clients"
+        description: "Tabela que contém os dados dos clientes."
+        columns:
+          - name: 'client_id'
+            description: 'Identificador único do cliente.'
+          - name: 'first_name'
+            description: 'Nome inicial do cliente.'
+          - name: 'last_name'
+            description: 'Nome final do cliente.'
+          - name: 'email'      
+            description: 'Endereço de email do cliente.'
+          - name: 'age'
+            description: 'Idade do cliente.'
+          - name: 'country'
+            description: 'País de residência do cliente.'
+
+      - name: "Products"
+        description: "Tabela que contém os dados dos produtos."
+        columns:
+          - name: 'product_id'
+            description: 'Identificador único do produto.'
+          - name: 'product_name'
+            description: 'Nome do produto.'
+          - name: 'category'
+            description: 'Categoria do produto.'
+          - name: 'unit_price'      
+            description: 'Preço unitário do produto.'
+
+      - name: "Sales_data"
+        description: "Tabela que contém os dados dos pedidos."
+        columns:
+          - name: 'order_id'
+            description: 'Identificador único do pedido.'
+          - name: 'quantity'
+            description: 'Quantidade pedida.'
+          - name: 'order_date'
+            description: 'Data do pedido.'
+          - name: 'order_country'      
+            description: 'País em que foi realizado o pedido.'
+          - name: 'product'
+            description: 'Produto pedido.'
+          - name: 'product_id'      
+            description: 'Identificador único do produto pedido.'
+          - name: 'client_id'      
+            description: 'Identificador único do cliente que fez o pedido.'
+
+      - name: "Products_Metrics"
+        description: "Tabela que contém os dados das métricas dos produtos."
+        columns:
+          - name: 'ad_id'
+            description: 'Identificador único do anúncio.'
+          - name: 'clicks'
+            description: 'Clicks no anúncio.'
+          - name: 'impressions'
+            description: 'Impressões do anúncio.'
+          - name: 'cost'      
+            description: 'Custo do anúncio.'
+          - name: 'leads'
+            description: 'Possíveis clientes.'
+          - name: 'conversions'      
+            description: 'Conversões do anúncio.'
+          - name: 'conversion_rate'      
+            description: 'Taxa de conversão.'
+          - name: 'device'      
+            description: 'Dispositivo em que o anúncio apareceu.'
+          - name: 'product_id'
+            description: 'Identificador único do produto.'
+          - name: 'platform'      
+            description: 'Plataforma em que foi divulgado o anúncio.'
+          - name: 'ad_date'      
+            description: 'Data do anúncio.'
+      

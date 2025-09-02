@@ -16,7 +16,7 @@ def generate_fake_client_data() -> dict:
     name = fake.name()
     age = random.randint(18,70)
     countries = [
-        'United Kingdom', 'France', 'Australia', 'Netherlands', 'Germany', 'Norway',
+        'United Kingdom', 'France', 'Australia', 'Netherlands', 'Germany', 'Norway', # FAZER DE PARA NO DBT PARA EUROPEAN COMMUNITY, RSA, EIRE.
         'EIRE', 'Switzerland', 'Spain', 'Poland', 'Portugal', 'Italy', 'Belgium',
         'Lithuania', 'Japan', 'Iceland', 'Channel Islands', 'Denmark', 'Cyprus',
         'Sweden', 'Austria', 'Israel', 'Finland', 'Bahrain', 'Greece', 'Hong Kong',
