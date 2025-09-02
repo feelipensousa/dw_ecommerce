@@ -1,48 +1,86 @@
 import pandas as pd
+from datetime import datetime, timedelta
 import random
 
 
-"""
-Colunas do df original
-
-['Ad_ID', 'Campaign_Name', 'Clicks', 'Impressions', 'Cost', 'Leads',
-'Conversions', 'Conversion_Rate', 'Sale_Amount', 'Ad_Date', 'Location',
-'Device', 'Keyword']
-"""
-"""
-campaign name, sales amount, location(substiutir por country ou ver se dá pra já pegar pelo id da venda), device (substituir pela plataforma), keyword 
-adicionar product_id
-"""
-def correcting_products_metrics(product_metrics: pd.DataFrame, columns_to_remove: list, products_df) -> pd.DataFrame:
+def generate_products_metrics_data(base_metrics_df: pd.DataFrame, products_df: pd.DataFrame, num_days: int) -> pd.DataFrame:
     """
-    Função que corrije colunas indesejáveis para nossa análise.
+    Expande e trata o DataFrame original de métricas de marketing com a geração de dados aleatórios.
+
+    Args:
+        base_metrics_df (pd.DataFrame): DataFrame base para replicação (ex: 2600 linhas).
+        products_df (pd.DataFrame): DataFrame de produtos para referência.
+        num_days (int): Número de dias a serem gerados.
 
     Returns:
-        dict: Dataframe com colunas corrigidas.
+        pd.DataFrame: DataFrame final de métricas de marketing.
     """
-    platforms = ["Facebook Ads", "Instagram ads", "Google ads"]
 
-    # Adicionamos pesos para que não fique 33% ou uma definida por mim a chance de aparecer as plataformas na coluna do df.
+    print("Iniciando geração de dados de métricas de produtos...") # Substituir pelo log de contagem de tempo
+    platforms = ["Facebook Ads", "Instagram Ads", "Google Ads", "LinkedIn Ads"]
+    
+    # Adicionando pesos pra não ter distribuição normal entre as plataformas e os produtos.
     choices_platforms_weights = [random.random() for _ in platforms]
     choices_products_weights = [random.random() for _ in range(len(products_df))]
-    print("Pesos das plataformas: ", choices_platforms_weights)
-    print("Pesos dos produtos: ", choices_products_weights)
+
+    metrics_data = []
+    ad_id = 0
+    
+    start_date = datetime(2024, 11, 30) # Data de referência
+
+    base_metrics_cleaned = base_metrics_df.copy()
+    
+    # Removemos as colunas indesejadas e adicionamos as novas
+    base_metrics_cleaned.drop(['campaign_name', 'sale_amount', 'keyword', 'location', 'ad_date'], axis=1, inplace=True)
+    base_metrics_cleaned['product_id'] = random.choices(products_df['product_id'].tolist(), weights=choices_products_weights, k=len(base_metrics_cleaned))
+    base_metrics_cleaned['platform'] = random.choices(platforms, weights=choices_platforms_weights, k=len(base_metrics_cleaned))
+
+    for day in range(num_days): # Populamos a tabela
+        current_date = start_date - timedelta(days=day)
+        
+        num_records_for_day = random.randint(60, 110) # # Quantidade de registros por dia (60 a 110)
+        daily_sample = base_metrics_cleaned.sample(n=num_records_for_day, replace=True).copy()
+        
+        daily_sample['ad_date'] = current_date # Corrigimos as datas da coluna 'ad_date'
+        
+        # Variamos as métricas a partir das existentes na tabela base
+        for col in ['clicks', 'impressions', 'leads', 'conversions']:
+            daily_sample[col] = daily_sample[col].astype(str).str.replace('$', '').str.replace(',', '')
+            daily_sample[col] = pd.to_numeric(daily_sample[col], errors='coerce')
+            daily_sample[col] = daily_sample[col].apply(lambda x: x * random.uniform(0.9, 1.1) if pd.notnull(x) else 0)
+            daily_sample[col] = daily_sample[col].astype(int)
+
+        # Tratamos a coluna 'cost' e refazemos a mesma lógica anterior
+        daily_sample['cost'] = daily_sample['cost'].astype(str).str.replace('$', '').str.replace(',', '')
+        daily_sample['cost'] = pd.to_numeric(daily_sample['cost'], errors='coerce')
+        daily_sample['cost'] = daily_sample['cost'].apply(lambda x: x * random.uniform(0.9, 1.1) if pd.notnull(x) else 0)
+        daily_sample['cost'] = daily_sample['cost'].round(2)
+        
+        daily_sample['conversion_rate'] = daily_sample.apply(
+            lambda row: round(row['conversions'] / row['clicks'], 2) if row['clicks'] > 0 else 0, axis=1
+        )
+        
+        for _, row in daily_sample.iterrows(): # Adicionamos os Ad_IDs sequencialmente
+            ad_id += 1
+            row['ad_ID'] = ad_id
+            metrics_data.append(row.to_dict())
 
 
-    df_PM = product_metrics.drop(columns_to_remove, axis=1)
-    df_PM["product_id"] = random.choices(products_df['product_id'].tolist(), weights=choices_products_weights, k=len(df_PM))
-    df_PM["platform"] = random.choices(platforms, weights=choices_platforms_weights, k=len(df_PM))
-
-    return df_PM
+    return pd.DataFrame(metrics_data)
 
 
 if __name__ == "__main__":
-    columns = ['campaign_name', 'sale_amount', 'keyword', 'location']
-    product_metrics = pd.read_csv("src/data/base_products_metrics.csv", sep=',', encoding='UTF-8')
+
+    # Base de dados original e a necessária para a foreign key
+    product_metrics_base_df = pd.read_csv("src/data/base_products_metrics.csv", sep=',', encoding='UTF-8')
     products_df = pd.read_csv("src/data/Products.csv", sep=',', encoding='UTF-8')
 
-    product_metrics_df = correcting_products_metrics(product_metrics, columns, products_df)
-    print(product_metrics_df.columns)
-    print("Data mínima:", product_metrics_df['ad_date'].min())
-    print("Data máxima:", product_metrics_df['ad_date'].max())
+    products_metrics_df = generate_products_metrics_data(product_metrics_base_df, products_df, num_days=1000)
 
+    products_metrics_df.to_csv("src/data/Products_Metrics.csv", index=False)
+    
+    print("Geração do DataFrame Products_Metrics concluída.")
+    # print(f"Total de registros gerados: {len(products_metrics_df)}")
+    # print(f"Data mínima: {products_metrics_df['ad_date'].min()}")
+    # print(f"Data máxima: {products_metrics_df['ad_date'].max()}")
+    # print("Colunas:", products_metrics_df.columns.tolist())

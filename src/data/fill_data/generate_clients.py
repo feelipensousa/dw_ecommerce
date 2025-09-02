@@ -3,7 +3,7 @@ import random
 import pandas as pd
 import uuid
 
-def generate_fake_client_data() -> pd.DataFrame:
+def generate_fake_client_data() -> dict:
     """
     Geração de dados fictícios como Id único, cpf, Primeiro Nome, Sobrenome, Idade, e País.
 

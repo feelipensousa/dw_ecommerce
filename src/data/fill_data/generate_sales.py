@@ -3,9 +3,16 @@ from datetime import datetime, timedelta
 import random
 
 
-def generate_fake_order_data(order_id: int , date: datetime, product: str, product_id: int, client_id: str) -> pd.DataFrame:
+def generate_fake_order_data(order_id: int , date: datetime, product: str, product_id: int, client_id: str) -> dict:
     """
     Geração de dados fictícios de vendas como Id do pedido, Quantitdade, Data do pedido, País em que foi pedido, id do produto e id do cliente.
+
+    Args:
+        order_id (int): Id do pedido.
+        date (datetime): Data de referência.
+        product (str): Produto da tabela Products.
+        product_id (int): Id do produto.
+        client_id (int): Id do cliente.
 
     Returns:
         dict: Dicionário com os dados fictícios gerados. Chaves: order_id, quantity, order_date, order_country, product_id e client_id
@@ -35,22 +42,22 @@ def generate_fake_order_data(order_id: int , date: datetime, product: str, produ
 
 if __name__ == "__main__":
 
-    # base de dados para as foreign keys
+    # Base de dados para as foreign keys
     products_df = pd.read_csv('src/data/Products.csv', sep=',', encoding='utf-8')
     client_df = pd.read_csv('src/data/Clients.csv', sep=',', encoding='utf-8')
 
     sales = []
 
-    start_date = datetime(2024, 11, 30) # As vendas começaram a partir do dia 01/01/2022 (CONSERTAR A DATA DEVE SE INICIAR 30/11/2024 E DECRESCER 100 DIAS)
+    start_date = datetime(2024, 11, 30) # Data de referência
     num_days = 1000 # Quantidade de dias de pedidos
 
     order_id = 0
 
-    choices_weights = [random.random() for _ in range(len(products_df))]
+    choices_weights = [random.random() for _ in range(len(products_df))] # Adicionamos pesos pra aumentar a aleatoriedade dos produtos
     print("Pesos dos produtos: ", len(choices_weights)) 
 
-    for day in range(num_days): #
-        date = start_date - timedelta(days=day)
+    for day in range(num_days):
+        date = start_date - timedelta(days=day) # Contagem regressiva de dias
         num_orders = random.randint(250, 550) # Quantidade de pedidos no dia
 
         for i in range(num_orders):

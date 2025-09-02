@@ -1,22 +1,29 @@
-"""
-Geramos a lista de produtos separados por categorias.
-"""
 import pandas as pd
 
-produtos = pd.read_csv("src/data/base_products.csv") #size 240 lines
-produtos_1 = produtos.drop_duplicates(subset=["Product Name"])
+def generate_products(file_path: str) -> pd.DataFrame:
+    """
+    Geramos a lista de produtos únicos separados por categorias.
 
-#print(produtos_1.head())
+    Args:
+        file_path (str): Caminho base do arquivo.
+
+    Returns:
+        Dataframe: Dataframe com os produtos. Colunas: product_id, product_name, category, unit_price.
+    """
+    df_product = pd.read_csv(file_path)
+    df_product = df_product.drop_duplicates(subset=["Product Name"])
+
+    product = {
+        "product_id": [i for i in range(1, len(df_product) + 1)],
+        "product_name": df_product["Product Name"].tolist(),
+        "category": df_product["Product Category"].tolist(),
+        "unit_price": df_product["Unit Price"].tolist(),
+        }
 
 
-product = {
-    "product_id": [i for i in range(1, len(produtos_1) + 1)],
-    "product_name": produtos_1["Product Name"].tolist(),
-    "category": produtos_1["Product Category"].tolist(),
-    "unit_price": produtos_1["Unit Price"].tolist(),
-    }
+    return pd.DataFrame(product)
 
 
-product_df = pd.DataFrame(product)
-product_df.to_csv('src/data/Products.csv', index=False)
-
+if __name__ == "__main__":
+    produtos = generate_products(file_path="src/data/base_products.csv")
+    produtos.to_csv('src/data/Products.csv', index=False)
