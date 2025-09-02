@@ -2,6 +2,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 from dotenv import load_dotenv
+import os
 
 class PostgresLoader:
     def __init__(self, user: str, password: str, host: str, port: int, database: str):
@@ -47,12 +48,17 @@ if __name__ == "__main__":
     load_dotenv()
 
     loader = PostgresLoader(
-        user="seu_usuario",
-        password="sua_senha",
-        host="localhost",
-        port=5432,
-        database="seu_db"
+        user=os.getenv("DB_USER_PROD"),
+        password=os.getenv("DB_PASSWORD_PROD"),
+        host=os.getenv("DB_HOST_PROD"),
+        port=os.getenv("DB_PORT_PROD"),
+        database=os.getenv("DB_NAME_PROD")
     )
 
-    #loader.load_csv("data/gold/clients_sales_gold.csv", "clients_sales_gold")
-    #loader.load_csv("data/gold/google_ads_gold.csv", "google_ads_gold")
+    # Carregamos as tabelas no banco postgres.
+    loader.load_csv_to_db("src/data/Clients.csv", "Clients")
+    loader.load_csv_to_db("src/data/Products.csv", "Products")
+    loader.load_csv_to_db("src/data/Sales_Data.csv", "Sales_Data")
+    loader.load_csv_to_db("src/data/Products_Metrics.csv", "Products_Metrics")    
+
+

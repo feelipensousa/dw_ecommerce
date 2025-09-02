@@ -196,7 +196,7 @@ if __name__ == "__main__":
     products_metrics_df = generate_products_metrics_data(product_metrics_base_df, products_df, num_days=1000)
 
     # Salve o resultado final
-    products_metrics_df.to_csv("src/data/Products_Metrics_Gemini1.csv", index=False)
+    products_metrics_df.to_csv("src/data/Products_Metrics.csv", index=False)
     
     print("Geração do DataFrame Products_Metrics concluída.")
     print(f"Total de registros gerados: {len(products_metrics_df)}")
