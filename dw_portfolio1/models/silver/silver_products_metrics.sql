@@ -22,7 +22,10 @@ silver_metrics as (
         cost,
         leads,
         conversions,
-        conversion_rate
+        CASE
+            WHEN clicks > 0 THEN conversions / clicks
+            ELSE 0
+        END AS conversion_rate,
         LOWER(device) as device,
         product_id,
         platform,

@@ -3,7 +3,7 @@ with source as (
         product_id,
         product_name,
         category,
-        unit_price,
+        unit_price
     FROM {{ source ('db_ecommerce_k53u', 'Products') }}        
 )
 
