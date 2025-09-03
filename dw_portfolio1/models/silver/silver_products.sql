@@ -7,7 +7,7 @@ with source as (
     FROM {{ source ('db_ecommerce_k53u', 'Products') }}        
 )
 
-renamed as (
+silver_products as (
     SELECT
         product_id,
         INITCAP(product_name) as product_name,
@@ -16,4 +16,4 @@ renamed as (
     FROM source
 )
 
-SELECT * FROM renamed
+SELECT * FROM silver_products

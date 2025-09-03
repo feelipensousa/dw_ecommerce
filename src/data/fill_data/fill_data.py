@@ -12,4 +12,5 @@ O que fazer no dbt:
     tabela Products_Metrics:
         deixar device em lowercase
 
+        
 """

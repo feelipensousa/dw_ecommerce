@@ -25,7 +25,7 @@ joined as (
     LEFT JOIN products p ON s.product_id = p.product_id
 ),
 
-renamed as ( -- Adicionamos a coluna revenue e renomeamos os países
+silver_sales as ( -- Adicionamos a coluna revenue e renomeamos os países
     SELECT
         order_id,
         quantity,
@@ -45,4 +45,4 @@ renamed as ( -- Adicionamos a coluna revenue e renomeamos os países
     FROM joined
 )
 
-SELECT * FROM renamed
+SELECT * FROM silver_sales

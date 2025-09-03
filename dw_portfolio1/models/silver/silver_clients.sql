@@ -9,7 +9,7 @@ with source as (
     FROM {{ source ('db_ecommerce_k53u', 'Clients') }}        
 )
 
-renamed as (
+silver_clients as (
     SELECT
         client_id,
         first_name || ' ' || last_name as full_name,
@@ -25,4 +25,4 @@ renamed as (
     FROM source
 )
 
-SELECT * FROM renamed
+SELECT * FROM silver_clients
