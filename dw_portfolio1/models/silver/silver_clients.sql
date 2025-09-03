@@ -16,7 +16,7 @@ silver_clients as (
         email,
         age,
         CASE
-            WHEN country = 'EUROPEAN COMMUNITY' THEN 'Estonia' -- País na união europeia que não existe na lista original
+            WHEN country = 'EUROPEAN COMMUNITY' THEN 'Estonia' -- País da união europeia que não existe na lista original
             WHEN country = 'RSA' THEN 'South Africa'
             WHEN country = 'EIRE' THEN 'Ireland'
             WHEN country = 'USA' THEN 'United States of America'

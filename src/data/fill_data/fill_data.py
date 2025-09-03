@@ -1,6 +1,6 @@
 """
 KPI'S da camada gold
-Tabela Sales_Metrics:
+Tabela Sales_data:
     - Qual produto está vendendo mais / podendo ter filtro separado por categoria (receita e quantidade)
     - qual categoria está vendendo mais por país
     - período do ano que mais vendeu
