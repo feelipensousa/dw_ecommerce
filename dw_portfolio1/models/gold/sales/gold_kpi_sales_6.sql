@@ -1,0 +1,1 @@
+-- 6) calcular ltv médio por cliente

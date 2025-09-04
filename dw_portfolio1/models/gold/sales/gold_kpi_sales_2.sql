@@ -1,0 +1,1 @@
+-- 2) rankear categorias que mais venderam por país

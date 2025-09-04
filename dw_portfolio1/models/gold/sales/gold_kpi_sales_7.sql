@@ -1,0 +1,1 @@
+-- 7) calcular ticket médio por cliente
