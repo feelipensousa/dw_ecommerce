@@ -8,6 +8,7 @@ Tabela Sales_data:
     - categoria por idade media (5)
     - ltv clientes (6)
     - ticket médio de clientes (7)
+    - RFM clientes (8)
     
 Tabela Products_Metrics:
     Tabela com calculo de ROAS e CAC
@@ -49,21 +50,7 @@ Tabelas:
     products_metrics
 
 
-
-  ad_ID integer [primary key]
-  clicks integer
-  impressions integer
-  cost decimal(10,2)
-  leads integer
-  conversions integer
-  conversion_rate float
-  ad_date datetime
-  Device varchar
-  product_id integer
-  platform varchar
-  cpc float
-  ctr float
-  cpa float
+COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS
 
 
 
