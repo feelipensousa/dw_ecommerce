@@ -1,16 +1,34 @@
 """
-KPI'S da camada gold
-Tabela Sales_data:
-    - Qual produto está vendendo mais / podendo ter filtro separado por categoria (receita e quantidade) (1)
-    - qual categoria está vendendo mais por país (2)
-    - período do ano que mais vendeu (3)
-    - idade de cliente que mais faturou (4)
-    - categoria por idade media (5)
-    - ltv clientes (6)
-    - ticket médio de clientes (7)
-    - RFM clientes (8)
+# KPI'S da camada gold
+
+Lógica de execução:
+Tabelas:
+    sales_data views:
+    1) rankear produtos que mais venderam (quantidade e receita) por categoria
+    2) rankear categorias que mais venderam por país
+    3) rankear períodos do ano que mais venderam
+    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
+    5) calcular ltv médio por cliente
+    6) calcular ticket médio por cliente
+    7) RFM clientes -------COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS
+
+        📊 Dashboard 1 — Vendas & Produtos (foco em performance)
+
+        Produtos mais vendidos (quantidade x receita, separados).
+        Categorias por país (mapa + ranking).
+        Períodos do ano mais fortes (linha/coluna para sazonalidade).
+        Ticket médio por cliente.
+
+        📊 Dashboard 2 — Clientes & Retenção (foco em comportamento)
+
+        Receita por faixa de idade.
+        Categorias preferidas por faixa etária
+        LTV médio (com distribuição por cliente).
+        Segmentação RFM (pizza, barras, heatmap).
+        % de clientes em risco de churn.
+
     
-Tabela Products_Metrics:
+    Tabela Products_Metrics:
     Tabela com calculo de ROAS e CAC
     Views:
     - Plataformma:
@@ -35,21 +53,6 @@ Tabela Products_Metrics:
         - qual país teve mais impressões x taxa de conversões
 
 
-Lógica de execução:
-Tabelas:
-    sales_data views:
-    1) rankear produtos que mais venderam (quantidade e receita) por categoria
-    2) rankear categorias que mais venderam por país
-    3) rankear períodos do ano que mais venderam
-    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
-    6) calcular ltv médio por cliente
-    7) calcular ticket médio por cliente
-    8) RFM clientes
-
-    products_metrics
-
-
-COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS
 
 aa
 

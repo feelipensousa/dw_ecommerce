@@ -62,9 +62,3 @@ joined AS (
 SELECT * FROM joined;
 
 
--- Precisa fazer faixa de idade de clientes (18-25, 26-35, 36-45, 46-55, 56+)
--- Precisa fazer faixa de mês como trimestre (jan-abril, maio-agosto, setembro-dezembro)
--- Análise de risco de churn pelo valor gasto e frequência desde o último pedido. fazer isso mais pra frente
--- Ticket médio por cliente
--- LTV (Lifetime Value) - Valor total que um cliente gasta durante todo o período em que é cliente
-
