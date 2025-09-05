@@ -39,10 +39,6 @@ silver_metrics as (
             WHEN impressions > 0 THEN clicks / impressions
             ELSE 0
         END AS ctr, -- Taxa de cliques
-        CASE
-            WHEN conversions > 0 THEN cost / conversions
-            ELSE 0
-        END AS cpa -- Custo por aquisição
     FROM source
 )
 

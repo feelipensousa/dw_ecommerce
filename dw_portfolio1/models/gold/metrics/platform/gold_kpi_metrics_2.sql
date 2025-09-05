@@ -1,0 +1,1 @@
+-- 2) maiores cpc, ctr, cpa por plataforma

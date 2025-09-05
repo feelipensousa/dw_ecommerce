@@ -32,28 +32,40 @@ Tabelas:
     Tabela com calculo de ROAS e CAC
     Views:
     - Plataformma:
-        - produtos com maior taxa de conversão média por plataforma
-        - maiores cpc, ctr, cpa por plataforma
-        - maior ROAS por plataforma
-        - qual plataforma mais converteu 
-        - qual plataformas teve mais impressões x taxa de conversões
+        - 1) produtos com maior taxa de conversão média, CPC médio, CTR médio, ROAS médio, maior impressão x taxa de conversões por plataforma
+        - 3) custo total e CPA por plataforma
+        - 4)  receita x custo por plataforma (ROI)
+
     
     - Idade:
         - produtos com maior taxa de conversão média por idade
-        - maiores cpc, ctr, cpa por idade
-        - maior ROAS por idade
-        - qual idade mais converteu
+        - maiores cpc médio, ctr médio, ROAS por idade
+        - 
+        - 
         - qual idade teve mais impressões x taxa de conversões
 
     - País:
         - produtos com maior taxa de conversão média por país
-        - maiores cpc, ctr, cpa por país
-        - maior ROAS por país
-        - qual país mais converteu
+        - maiores cpc, ctr, ROAS por país
+        - 
+        - 
         - qual país teve mais impressões x taxa de conversões
 
 
 
-aa
+  ad_ID 
+  clicks
+  impressions 
+  cost 
+  leads 
+  conversions 
+  conversion_rate 
+  ad_date 
+  Device 
+  product_id 
+  platform 
+  cpc 
+  ctr 
+
 
 """

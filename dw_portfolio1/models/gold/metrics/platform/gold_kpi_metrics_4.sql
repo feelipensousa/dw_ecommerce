@@ -1,0 +1,1 @@
+-- 4) qual plataforma mais converteu 

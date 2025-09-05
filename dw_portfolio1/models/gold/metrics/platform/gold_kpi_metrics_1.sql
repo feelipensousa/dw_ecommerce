@@ -1,0 +1,1 @@
+-- 1) produtos com maior taxa de conversão média por plataforma
