@@ -36,7 +36,7 @@ joined AS (
             WHEN d.month_num BETWEEN 1 AND 4 THEN '1º Trimestre'
             WHEN d.month_num BETWEEN 5 AND 8 THEN '2º Trimestre'
             WHEN d.month_num BETWEEN 9 AND 12 THEN '3º Trimestre'
-        END AS trimestre,
+        END AS trimester,
         s.product_id,
         s.product,
         s.quantity,
@@ -52,7 +52,7 @@ joined AS (
             WHEN c.age BETWEEN 36 AND 45 THEN '36-45'
             WHEN c.age BETWEEN 46 AND 55 THEN '46-55'
             ELSE '56+'
-        END AS faixa_idade,
+        END AS age_range,
         p.category
     FROM sales_KPI s
     LEFT JOIN clients c ON s.client_id = c.client_id

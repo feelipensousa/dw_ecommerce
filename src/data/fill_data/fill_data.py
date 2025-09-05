@@ -41,8 +41,7 @@ Tabelas:
     1) rankear produtos que mais venderam (quantidade e receita) por categoria
     2) rankear categorias que mais venderam por país
     3) rankear períodos do ano que mais venderam
-    4) rankear faixa de idade de clientes que mais geraram receita
-    5) rankear categorias por faixa de idade
+    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
     6) calcular ltv médio por cliente
     7) calcular ticket médio por cliente
     8) RFM clientes
@@ -52,6 +51,6 @@ Tabelas:
 
 COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS
 
-
+aa
 
 """
