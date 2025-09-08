@@ -37,7 +37,8 @@ agg_platform AS (
         AVG(avg_cpc) AS avg_cpc,
         AVG(avg_ctr) AS avg_ctr,
         SUM(impressions_conversion_score) AS impressions_conversion_score,
-        SUM(total_revenue) / NULLIF(SUM(total_cost),0) AS roas
+        SUM(total_revenue) / NULLIF(SUM(total_cost),0) AS roas,
+        SUM(total_revenue) - SUM(total_cost)) / NULLIF(SUM(total_cost), 0) AS roi
     FROM joined
     GROUP BY platform
 )
