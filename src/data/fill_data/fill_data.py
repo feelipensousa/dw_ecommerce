@@ -37,16 +37,14 @@ Tabelas:
 
     
     - Idade:
-        - maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por idade
+        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por idade
         - 2) custo total e CPA por idade
 
 
     - País:
-        - produtos com maior taxa de conversão média por país
-        - maiores cpc, ctr, ROAS por país
-        - 
-        - 
-        - qual país teve mais impressões x taxa de conversões
+        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por país
+        - 2) custo total e CPA por país
+
 
 
 
