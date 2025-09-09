@@ -1,6 +1,6 @@
 -- 2) custo total e CPA por país
 
-WITH joined_data AS (
+WITH source AS (
     SELECT
         pm.cost,
         pm.conversions,
@@ -14,7 +14,7 @@ agg_by_country AS (
         order_country AS country,
         SUM(cost) AS total_cost,
         SUM(conversions) AS total_conversions
-    FROM joined_data
+    FROM source
     GROUP BY country
 )
 SELECT
