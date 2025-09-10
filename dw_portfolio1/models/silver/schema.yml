@@ -2,7 +2,7 @@
 version: 2
 
 sources:
-  - name: db_ecommerce_k53u
+  - name: db_ecommerce_k53u # ver se é esse e nã0 o nome das tabelas da silver
     schema: public
     tables:
 
@@ -15,6 +15,15 @@ sources:
             description: 'Nome inicial do cliente.'
           - name: 'last_name'
             description: 'Nome final do cliente.'
+          - name: cpf
+            description: "Número de CPF do cliente"
+            tests:
+              - unique:
+                  config:
+                    severity: error   # Define que o teste falhe a pipeline se houver duplicidade
+              - not_null:
+                  config:
+                    severity: error   # Define que o teste falhe a pipeline se houver valores nulos
           - name: 'email'      
             description: 'Endereço de email do cliente.'
           - name: 'age'
