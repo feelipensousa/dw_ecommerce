@@ -1,4 +1,8 @@
 -- 2) custo total e CPA por idade
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH source AS(
     SELECT
         SELECT

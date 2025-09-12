@@ -1,5 +1,6 @@
 {{ config(
-    materialized='table'  
+    schema='public_gold',
+    materialized='table'
 ) }}
 
 WITH source AS(

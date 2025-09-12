@@ -1,4 +1,8 @@
 -- 3) rankear períodos do ano que mais venderam
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH trimester_sales AS (
     SELECT
         trimester,

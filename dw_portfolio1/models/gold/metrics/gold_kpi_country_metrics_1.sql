@@ -1,5 +1,8 @@
 -- 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por país
-
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH source AS (
     SELECT
         pm.product_id,

@@ -1,4 +1,9 @@
 -- 1) Produtos e categorias que mais venderam (quantidade e receita)
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
+
 WITH sales AS (
     SELECT
         product,

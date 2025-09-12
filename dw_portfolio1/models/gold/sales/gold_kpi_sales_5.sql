@@ -1,4 +1,8 @@
 -- 5) calcular ltv médio por cliente
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH source AS (
     SELECT
         client_id,

@@ -1,5 +1,8 @@
 -- 2) custo total e CPA por plataforma
-
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH source AS (
     platform,
     SUM(cost) as total_cost,

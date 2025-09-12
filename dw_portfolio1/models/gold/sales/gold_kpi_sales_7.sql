@@ -1,4 +1,8 @@
 -- 7) RFM clientes
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH source AS (
     SELECT 
         client_id,

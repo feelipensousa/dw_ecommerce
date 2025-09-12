@@ -1,4 +1,5 @@
 {{ config(
+    schema='public_gold',
     materialized='table'  
 ) }}
 

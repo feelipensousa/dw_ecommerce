@@ -1,5 +1,8 @@
 -- 2) custo total e CPA por país
-
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH source AS (
     SELECT
         pm.cost,

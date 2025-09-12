@@ -1,4 +1,8 @@
 -- 6) calcular ticket médio por cliente
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH source AS (
     SELECT
         COUNT(DISTINCT client_id) AS total_clients,

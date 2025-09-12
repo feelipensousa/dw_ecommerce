@@ -1,4 +1,8 @@
 -- 4) rankear faixa de idade de clientes que mais geraram receita por categorias
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH source AS (
     SELECT
         age_range,

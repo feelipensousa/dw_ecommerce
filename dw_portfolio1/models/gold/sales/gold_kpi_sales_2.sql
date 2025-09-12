@@ -1,4 +1,8 @@
 -- 2) Rankear categorias que mais venderam por país
+{{ config(
+    schema='public_gold',
+    materialized='view'
+) }}
 WITH sales AS (
     SELECT
         country,
