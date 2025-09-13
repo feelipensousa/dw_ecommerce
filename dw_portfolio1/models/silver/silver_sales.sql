@@ -7,7 +7,7 @@ with source as (
         product,
         product_id,
         client_id
-    FROM {{ source ('db_ecommerce_k53u', 'Sales_data') }}        
+    FROM {{ source ('db_ecommerce_k53u', 'Sales_Data') }}        
 ),
 
 products as (

@@ -60,6 +60,6 @@ joined AS (
     LEFT JOIN products p ON s.product_id = p.product_id
     LEFT JOIN dates d ON s.order_id = d.order_id
 )
-SELECT * FROM joined;
+SELECT * FROM joined
 
 

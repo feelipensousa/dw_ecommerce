@@ -10,5 +10,5 @@ WITH source AS(
 
 )
 
-SELECT * FROM source;
+SELECT * FROM source
 

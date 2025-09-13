@@ -43,7 +43,7 @@ sources:
           - name: 'unit_price'      
             description: 'Preço unitário do produto.'
 
-      - name: "Sales_data"
+      - name: "Sales_Data"
         description: "Tabela que contém os dados dos pedidos."
         columns:
           - name: 'order_id'

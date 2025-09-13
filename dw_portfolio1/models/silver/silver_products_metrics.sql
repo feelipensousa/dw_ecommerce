@@ -1,6 +1,6 @@
 with source as (
     SELECT
-        ad_ID,
+        "ad_ID",
         clicks,
         impressions,
         cost,
@@ -16,7 +16,7 @@ with source as (
 
 silver_metrics as (
     SELECT
-        ad_ID,
+        "ad_ID" as ad_id,
         clicks,
         impressions,
         cost,
@@ -38,7 +38,7 @@ silver_metrics as (
         CASE
             WHEN impressions > 0 THEN clicks / impressions
             ELSE 0
-        END AS ctr, -- Taxa de cliques
+        END AS ctr -- Taxa de cliques
     FROM source
 )
 

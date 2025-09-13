@@ -1,18 +1,18 @@
-with source as (
+WITH source AS (
     SELECT
         product_id,
         product_name,
         category,
         unit_price
-    FROM {{ source ('db_ecommerce_k53u', 'Products') }}        
-)
+    FROM {{ source('db_ecommerce_k53u', 'Products') }}        
+),
 
-silver_products as (
+silver_products AS (
     SELECT
         product_id,
-        INITCAP(product_name) as product_name,
-        INITCAP(category) as category,
-        unit_price,
+        INITCAP(product_name) AS product_name,
+        INITCAP(category) AS category,
+        unit_price
     FROM source
 )
 
