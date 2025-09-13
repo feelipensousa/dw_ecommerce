@@ -13,20 +13,20 @@ WITH sales AS (
         SUM(quantity) AS total_quantity
     FROM {{ ref('gold_kpi_tb_sales') }}
     GROUP BY product, category
-)
+),
 
 -- Ranking por receita
-, ranking_revenue AS (
+ranking_revenue AS (
     SELECT
         product,
         category,
         total_revenue,
         RANK() OVER (ORDER BY total_revenue DESC) AS rank_revenue
     FROM sales
-)
+),
 
 -- Ranking por quantidade vendida
-, ranking_quantity AS (
+ranking_quantity AS (
     SELECT
         product,
         category,
@@ -45,4 +45,4 @@ SELECT
 FROM sales s
 LEFT JOIN ranking_revenue r ON s.product = r.product AND s.category = r.category
 LEFT JOIN ranking_quantity q ON s.product = q.product AND s.category = q.category
-ORDER BY r.rank_revenue, q.rank_quantity;
+ORDER BY r.rank_revenue, q.rank_quantity

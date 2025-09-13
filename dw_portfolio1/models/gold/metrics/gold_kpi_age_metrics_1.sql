@@ -3,9 +3,8 @@
     schema='public_gold',
     materialized='view'
 ) }}
-WITH source AS(
+WITH source AS (
     SELECT
-        SELECT
         s.client_id,
         s.product_id,
         s.revenue,
@@ -21,7 +20,6 @@ WITH source AS(
         ON s.client_id = c.client_id
 ),
 agg_by_age AS(
-    SELECT
     SELECT
         age,
         SUM(clicks) AS total_clicks,
@@ -42,4 +40,4 @@ SELECT
     (total_revenue - total_cost) / NULLIF(total_cost, 0) AS roi,
     total_conversions / NULLIF(total_clicks, 0) AS conversion_rate
 FROM agg_by_age
-ORDER BY roas DESC;
+ORDER BY roas DESC

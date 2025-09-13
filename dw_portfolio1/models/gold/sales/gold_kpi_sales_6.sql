@@ -11,4 +11,4 @@ WITH source AS (
 )
 SELECT
     total_amount_spent / total_clients AS avg_ticket_per_client
-FROM source;
+FROM source

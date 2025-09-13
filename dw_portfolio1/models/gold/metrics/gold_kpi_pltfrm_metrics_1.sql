@@ -39,4 +39,4 @@ SELECT
     total_conversions / NULLIF(total_clicks, 0) AS conversion_rate
     
 FROM agg_by_platform
-ORDER BY roas DESC;
+ORDER BY roas DESC

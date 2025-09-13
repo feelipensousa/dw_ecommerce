@@ -26,4 +26,4 @@ SELECT
     value_rank
 FROM ranking
 WHERE value_rank = 1
-ORDER BY age_range;
+ORDER BY age_range

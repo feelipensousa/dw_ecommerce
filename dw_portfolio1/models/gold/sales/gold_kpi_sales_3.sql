@@ -10,8 +10,8 @@ WITH trimester_sales AS (
         COUNT(order_id) AS total_orders,
         SUM(quantity) AS total_quantity
     FROM {{ ref('gold_kpi_tb_sales') }}
-    GROUP BY trimestre
-    ORDER BY total_revenue DESC, total_quantity DESC;
+    GROUP BY trimester
+    ORDER BY total_revenue DESC, total_quantity DESC
 )
 
 SELECT * FROM trimester_sales

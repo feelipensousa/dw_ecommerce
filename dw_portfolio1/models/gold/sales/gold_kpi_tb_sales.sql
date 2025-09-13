@@ -24,9 +24,9 @@ products AS (
 dates AS (
     SELECT
         order_id,
-        order_date,
-        extract(month from order_date) AS month_num,
-        extract(year from order_date) AS year
+        order_date::date AS order_date,
+        extract(month from order_date::date) AS month_num,
+        extract(year from order_date::date) AS year
     FROM {{ ref('silver_sales') }}
 ),
 joined AS (

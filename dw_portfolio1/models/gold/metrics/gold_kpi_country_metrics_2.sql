@@ -25,4 +25,4 @@ SELECT
     total_cost,
     total_cost / NULLIF(total_conversions, 0) AS cpa
 FROM agg_by_country
-ORDER BY total_cost DESC;
+ORDER BY total_cost DESC

@@ -32,4 +32,4 @@ SELECT
         ELSE 'Baixo'
     END AS ltv_category,
     ROUND(total_amount_spent / NULLIF(months_active,0),2) AS avg_monthly_ltv
-FROM ltv;
+FROM ltv

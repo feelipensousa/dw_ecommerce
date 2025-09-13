@@ -41,6 +41,6 @@ rfm_segment AS (
         END AS segmento_rfm
     FROM rfm_calc
 )
-SELECT * FROM rfm_segment;
+SELECT * FROM rfm_segment
 
 -- Provavelmente analisar churn por categoria, pensar em outros gráficos.
