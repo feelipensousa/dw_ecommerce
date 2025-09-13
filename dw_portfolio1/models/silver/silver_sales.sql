@@ -33,7 +33,7 @@ silver_sales as ( -- Adicionamos a coluna revenue e renomeamos os países
         quantity * unit_price as revenue,
         order_date,
         CASE
-            WHEN order_country = 'EUROPEAN COMMUNITY' THEN 'Estonia'
+            WHEN order_country = 'European Community' THEN 'Estonia'
             WHEN order_country = 'RSA' THEN 'South Africa'
             WHEN order_country = 'EIRE' THEN 'Ireland'
             WHEN order_country = 'USA' THEN 'United States of America'

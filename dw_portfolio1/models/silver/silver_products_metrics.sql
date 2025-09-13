@@ -22,23 +22,22 @@ silver_metrics as (
         cost,
         leads,
         conversions,
-        CASE
-            WHEN clicks > 0 THEN conversions / clicks
-            ELSE 0
-        END AS conversion_rate,
+        ROUND(
+            CASE
+                WHEN clicks > 0 THEN conversions::decimal / clicks
+                ELSE 0
+            END, 4
+        ) AS conversion_rate,
         LOWER(device) as device,
         product_id,
         platform,
         ad_date,
-        -- Adicionamos novas métricas de análise
-        CASE
-            WHEN clicks > 0 THEN cost / clicks
-            ELSE 0
-        END AS cpc, -- Custo por clique
-        CASE
-            WHEN impressions > 0 THEN clicks / impressions
-            ELSE 0
-        END AS ctr -- Taxa de cliques
+        ROUND(
+            CASE
+                WHEN impressions > 0 THEN clicks::decimal / impressions
+                ELSE 0
+            END, 4
+        ) AS ctr
     FROM source
 )
 
