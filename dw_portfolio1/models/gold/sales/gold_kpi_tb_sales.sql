@@ -44,6 +44,7 @@ joined AS (
         s.unit_price,
         s.revenue,
         s.order_country,
+        c.client_id,
         c.full_name,
         c.client_country,
         c.age,

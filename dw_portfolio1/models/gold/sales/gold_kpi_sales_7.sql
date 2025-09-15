@@ -9,8 +9,8 @@ WITH source AS (
         full_name,
         SUM(revenue) AS amount_client_spent,
         COUNT(order_id) AS total_orders,
-        COUNT(DISTINCT to_char(order_date, 'YYYY-MM')) AS active_months,
-        MAX(order_date) AS last_order_date
+        COUNT(DISTINCT to_char(order_date::date, 'YYYY-MM')) AS active_months,
+        MAX(order_date::date) AS last_order_date -- declarar tipagem de coluna na silver.
     FROM {{ ref('gold_kpi_tb_sales') }}
     GROUP BY client_id, full_name
 ),
@@ -24,7 +24,7 @@ rfm_calc AS (
             THEN total_orders::float / active_months
             ELSE 0 
         END AS monthly_frequency,
-        EXTRACT(DAY FROM (CURRENT_DATE - last_order_date))::int AS days_since_last_purchase
+        (CURRENT_DATE - last_order_date) AS days_since_last_purchase
     FROM source
 ),
 rfm_segment AS (
