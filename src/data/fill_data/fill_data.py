@@ -4,13 +4,13 @@
 Lógica de execução:
 Tabelas:
     sales_data views:
-    1) rankear produtos que mais venderam (quantidade e receita) por categoria
-    2) rankear categorias que mais venderam por país
-    3) rankear períodos do ano que mais venderam
-    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
-    5) calcular ltv médio por cliente
-    6) calcular ticket médio por cliente
-    7) RFM clientes -------COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS
+[v]    1) rankear produtos que mais venderam (quantidade e receita) por categoria
+[x]    2) rankear categorias que mais venderam por país (consertar deixar a maior categoria por cada país, está dando todas as categorias)
+[v]    3) rankear períodos do ano que mais venderam
+[v]    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
+[v]    5) calcular ltv médio por cliente
+[v]    6) calcular ticket médio por cliente
+[x]    7) RFM clientes -------COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS E CONSERTAR PARÂMETROS
 
         📊 Dashboard 1 — Vendas & Produtos (foco em performance)
 
@@ -32,18 +32,18 @@ Tabelas:
     Tabela com calculo de ROAS e CAC
     Views:
     - Plataformma:
-        - 1) maior taxa de conversão média, CPC médio, CTR médio, ROAS médio, maior impressão x taxa de conversões e ROI por plataforma.
-        - 2) custo total e CPA por plataforma
+[]        - 1) maior taxa de conversão média, CPC médio, CTR médio, ROAS médio, maior impressão x taxa de conversões e ROI por plataforma.
+[]        - 2) custo total e CPA por plataforma
 
     
     - Idade:
-        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por idade
-        - 2) custo total e CPA por idade
+[]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por idade
+[]        - 2) custo total e CPA por idade
 
 
     - País:
-        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por país
-        - 2) custo total e CPA por país
+[]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por país
+[]        - 2) custo total e CPA por país
 
 
 

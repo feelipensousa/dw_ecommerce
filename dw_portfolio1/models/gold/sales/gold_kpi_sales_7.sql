@@ -43,4 +43,5 @@ rfm_segment AS (
 )
 SELECT * FROM rfm_segment
 
--- Provavelmente analisar churn por categoria, pensar em outros gráficos.
+-- Provavelmente analisar churn por categoria, pensar em outros gráficos. 
+-- Só está dando 'Em Risco de Churn' mudar parâmetros.
