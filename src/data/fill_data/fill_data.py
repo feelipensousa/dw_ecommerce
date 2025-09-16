@@ -10,7 +10,7 @@ Tabelas:
 [v]    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
 [v]    5) calcular ltv médio por cliente
 [v]    6) calcular ticket médio por cliente
-[x]    7) RFM clientes -------COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS E CONSERTAR PARÂMETROS
+[x]    7) RFM clientes -------COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS E CONSERTAR PARÂMETROS (MÉDIA 414 DIAS)
 
         📊 Dashboard 1 — Vendas & Produtos (foco em performance)
 
@@ -32,18 +32,18 @@ Tabelas:
     Tabela com calculo de ROAS e CAC
     Views:
     - Plataformma:
-[]        - 1) maior taxa de conversão média, CPC médio, CTR médio, ROAS médio, maior impressão x taxa de conversões e ROI por plataforma.
-[]        - 2) custo total e CPA por plataforma
+[v]        - 1) maior taxa de conversão média, CPC médio, CTR médio, ROAS médio, maior impressão x taxa de conversões e ROI por plataforma.
+[v]        - 2) custo total e CPA por plataforma
 
     
     - Idade:
-[]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por idade
-[]        - 2) custo total e CPA por idade
+[x]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por idade --trocar o age por age_range
+[x]        - 2) custo total e CPA por idade
 
 
     - País:
-[]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por país
-[]        - 2) custo total e CPA por país
+[v]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por país ---- Ver qual é o país nulo.
+[v]        - 2) custo total e CPA por país
 
 
 

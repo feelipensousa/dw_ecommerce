@@ -9,7 +9,7 @@ WITH source AS(
         s.product_id,
         pm.conversions,
         pm.cost,
-        c.age
+        c.age -- Não é por age e sim por age_range da gold_sales
     FROM {{ ref('silver_sales') }} AS s
     LEFT JOIN {{ ref('silver_products_metrics') }} AS pm
         ON s.product_id = pm.product_id
