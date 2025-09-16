@@ -1,4 +1,4 @@
--- 2) Rankear categorias que mais venderam por país
+-- 8) Rankear categorias que mais venderam por país
 {{ config(
     schema='public_gold',
     materialized='view'
@@ -46,5 +46,4 @@ LEFT JOIN ranking_revenue r
     ON s.order_country = r.order_country AND s.category = r.category
 LEFT JOIN ranking_quantity q 
     ON s.order_country = q.order_country AND s.category = q.category
-WHERE r.rank_revenue = 1  -- pega só a categoria top 1 por receita
-ORDER BY s.total_revenue DESC
+ORDER BY s.order_country, r.rank_revenue

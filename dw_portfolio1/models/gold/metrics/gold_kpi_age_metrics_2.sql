@@ -9,23 +9,21 @@ WITH source AS(
         s.product_id,
         pm.conversions,
         pm.cost,
-        c.age -- Não é por age e sim por age_range da gold_sales
-    FROM {{ ref('silver_sales') }} AS s
+        s.age_range -- Não é por age e sim por age_range da gold_sales
+    FROM {{ ref('gold_kpi_tb_sales') }} AS s
     LEFT JOIN {{ ref('silver_products_metrics') }} AS pm
         ON s.product_id = pm.product_id
-    LEFT JOIN {{ ref('silver_clients') }} AS c
-        ON s.client_id = c.client_id
 ),
 agg_by_age AS (
     SELECT
-        age,
+        age_range,
         SUM(cost) AS total_cost,
         SUM(conversions) AS total_conversions
     FROM source
-    GROUP BY age
+    GROUP BY age_range
 )
 SELECT
-    age,
+    age_range,
     total_cost,
     total_cost / NULLIF(total_conversions, 0) AS cpa
 FROM agg_by_age

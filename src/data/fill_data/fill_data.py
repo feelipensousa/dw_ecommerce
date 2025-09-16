@@ -5,13 +5,13 @@ Lógica de execução:
 Tabelas:
     sales_data views:
 [v]    1) rankear produtos que mais venderam (quantidade e receita) por categoria
-[x]    2) rankear categorias que mais venderam por país (consertar deixar a maior categoria por cada país, está dando todas as categorias)
+[]    2) rankear categorias que mais venderam por país (consertar deixar a maior categoria por cada país, está dando todas as categorias)
 [v]    3) rankear períodos do ano que mais venderam
 [v]    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
 [v]    5) calcular ltv médio por cliente
 [v]    6) calcular ticket médio por cliente
 [x]    7) RFM clientes -------COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS E CONSERTAR PARÂMETROS (MÉDIA 414 DIAS)
-
+[]     8) Teste da 2.
         📊 Dashboard 1 — Vendas & Produtos (foco em performance)
 
         Produtos mais vendidos (quantidade x receita, separados).
@@ -37,8 +37,8 @@ Tabelas:
 
     
     - Idade:
-[x]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por idade --trocar o age por age_range
-[x]        - 2) custo total e CPA por idade
+[]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por idade --trocar o age por age_range
+[]        - 2) custo total e CPA por idade
 
 
     - País:

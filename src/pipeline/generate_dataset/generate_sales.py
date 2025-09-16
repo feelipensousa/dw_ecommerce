@@ -53,8 +53,11 @@ if __name__ == "__main__":
 
     order_id = 0
 
-    choices_weights = [random.random() for _ in range(len(products_df))] # Adicionamos pesos pra aumentar a aleatoriedade dos produtos
-    print("Pesos dos produtos: ", len(choices_weights)) 
+    choices_weights_products = [random.random() for _ in range(len(products_df))] # Adicionamos pesos pra aumentar a aleatoriedade dos produtos
+    print("Pesos dos produtos: ", len(choices_weights_products)) 
+
+    choices_weights_clients = [random.random() for _ in range(len(client_df))] # Adicionamos pesos pra aumentar a aleatoriedade dos produtos
+    print("Pesos dos clientes: ", len(choices_weights_clients)) 
 
     for day in range(num_days):
         date = start_date - timedelta(days=day) # Contagem regressiva de dias
@@ -62,8 +65,9 @@ if __name__ == "__main__":
 
         for i in range(num_orders):
             order_id += 1
-            product_id = random.choices(products_df['product_id'].tolist(), weights=choices_weights, k=1)[0] # Pega um produto aleatório com peso.           
-            client_id = random.choice(client_df['client_id'].tolist())  # Pega um client_id aleatório de todos os clientes
+            product_id = random.choices(products_df['product_id'].tolist(), weights=choices_weights_products, k=1)[0] # Pega um produto aleatório com peso.           
+            #client_id = random.choices(client_df['client_id'].tolist(), weights=choices_weights_clients, k=1)[0]  # Clients com peso            
+            client_id = random.choice(client_df['client_id'].tolist())  # Clients sem peso
             product = products_df[products_df['product_id'] == product_id].iloc[0]['product_name']
 
             order = generate_fake_order_data(order_id, date, product, product_id, client_id)
