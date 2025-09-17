@@ -12,7 +12,7 @@ WITH source AS (
         pm.impressions,
         pm.conversions,
         pm.cost,
-        s.age_range -- Não é por age e sim por age_range da gold_sales
+        s.age_range 
     FROM {{ ref('gold_kpi_tb_sales') }} AS s
     LEFT JOIN {{ ref('silver_products_metrics') }} AS pm
         ON s.product_id = pm.product_id
