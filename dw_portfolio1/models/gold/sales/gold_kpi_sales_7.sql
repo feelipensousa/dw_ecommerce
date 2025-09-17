@@ -32,10 +32,10 @@ rfm_segment AS (
         *,
         CASE
             WHEN amount_client_spent IS NULL OR amount_client_spent = 0 THEN 'Inativo'
-            WHEN amount_client_spent > 5000 AND days_since_last_purchase <= 30 AND monthly_frequency >= 2 THEN 'Campeão'
-            WHEN amount_client_spent > 3000 AND days_since_last_purchase <= 60 THEN 'Cliente Fiel'
-            WHEN amount_client_spent > 1000 AND days_since_last_purchase <= 90 THEN 'Potencial'
-            WHEN amount_client_spent > 0 AND days_since_last_purchase > 180 THEN 'Em Risco de Churn'
+            WHEN amount_client_spent > 4000 AND days_since_last_purchase <= 300 AND monthly_frequency >= 2 THEN 'Campeão' 
+            WHEN amount_client_spent > 3000 AND days_since_last_purchase <= 400 THEN 'Cliente Fiel' 
+            WHEN amount_client_spent > 1000 AND days_since_last_purchase <= 500 THEN 'Potencial'
+            WHEN amount_client_spent > 0 AND days_since_last_purchase > 500 THEN 'Em Risco de Churn' 
             WHEN amount_client_spent > 0 THEN 'Em Observação'
             ELSE 'Inativo'
         END AS segmento_rfm
