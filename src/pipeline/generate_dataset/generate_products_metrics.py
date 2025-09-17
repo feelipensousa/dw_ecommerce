@@ -38,27 +38,41 @@ def generate_products_metrics_data(base_metrics_df: pd.DataFrame, products_df: p
     for day in range(num_days): # Populamos a tabela
         current_date = start_date - timedelta(days=day)
         
-        num_records_for_day = random.randint(60, 110) # # Quantidade de registros por dia (60 a 110)
+        num_records_for_day = random.randint(60, 110) # Quantidade de registros por dia (60 a 110)
         daily_sample = base_metrics_cleaned.sample(n=num_records_for_day, replace=True).copy()
         
         daily_sample['ad_date'] = current_date # Corrigimos as datas da coluna 'ad_date'
         
-        # Variamos as métricas a partir das existentes na tabela base
+        # Variamos as métricas a partir das existentes na tabela base (com distribuição normal)
         for col in ['clicks', 'impressions', 'leads', 'conversions']:
-            daily_sample[col] = daily_sample[col].astype(str).str.replace('$', '').str.replace(',', '')
+            daily_sample[col] = (
+                daily_sample[col].astype(str).str.replace('$', '').str.replace(',', '')
+            )
             daily_sample[col] = pd.to_numeric(daily_sample[col], errors='coerce')
-            daily_sample[col] = daily_sample[col].apply(lambda x: x * random.uniform(0.9, 1.1) if pd.notnull(x) else 0)
-            daily_sample[col] = daily_sample[col].astype(int)
-
-        # Tratamos a coluna 'cost' e refazemos a mesma lógica anterior
-        daily_sample['cost'] = daily_sample['cost'].astype(str).str.replace('$', '').str.replace(',', '')
-        daily_sample['cost'] = pd.to_numeric(daily_sample['cost'], errors='coerce')
-        daily_sample['cost'] = daily_sample['cost'].apply(lambda x: x * random.uniform(0.9, 1.1) if pd.notnull(x) else 0)
-        daily_sample['cost'] = daily_sample['cost'].round(2)
+            
+        daily_sample['impressions'] = daily_sample['impressions'].apply(
+            lambda x: int(max(0, x * random.gauss(1, 0.25))) if pd.notnull(x) else 0)  # ±25% de variação
         
+        daily_sample['clicks'] = daily_sample['clicks'].apply(
+            lambda x: int(max(0, x * random.gauss(1, 0.20))) if pd.notnull(x) else 0)  # ±20% de variação
+        
+        daily_sample['leads'] = daily_sample['leads'].apply(
+            lambda x: int(max(0, x * random.gauss(1, 0.30))) if pd.notnull(x) else 0)  # ±30% de variação
+        
+        daily_sample['conversions'] = daily_sample['conversions'].apply(
+            lambda x: int(max(0, x * random.gauss(1, 0.35))) if pd.notnull(x) else 0)  # ±35% de variação
+        
+        daily_sample['cost'] = (
+            daily_sample['cost'].astype(str).str.replace('$', '').str.replace(',', ''))
+
+        daily_sample['cost'] = pd.to_numeric(daily_sample['cost'], errors='coerce')
+        daily_sample['cost'] = daily_sample['cost'].apply(
+            lambda x: round(max(0, x * random.gauss(1, 0.15)), 2) if pd.notnull(x) else 0)  # ±15% de variação
+        
+        # Cálculo do conversion rate
         daily_sample['conversion_rate'] = daily_sample.apply(
-            lambda row: round(row['conversions'] / row['clicks'], 2) if row['clicks'] > 0 else 0, axis=1
-        )
+            lambda row: round(row['conversions'] / row['clicks'], 2) if row['clicks'] > 0 else 0,
+            axis=1)
         
         for _, row in daily_sample.iterrows(): # Adicionamos os Ad_IDs sequencialmente
             ad_id += 1
