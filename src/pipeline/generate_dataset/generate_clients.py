@@ -14,7 +14,7 @@ def generate_fake_client_data() -> dict:
     fake = Faker("pt_BR")
     cpf = fake.cpf()
     name = fake.name()
-    age = random.randint(18,70)
+    age = int(min(max(random.gauss(35, 12), 18), 70))
     countries = [
         'United Kingdom', 'France', 'Australia', 'Netherlands', 'Germany', 'Norway', # FAZER DE PARA NO DBT PARA EUROPEAN COMMUNITY, RSA, EIRE.
         'EIRE', 'Switzerland', 'Spain', 'Poland', 'Portugal', 'Italy', 'Belgium',

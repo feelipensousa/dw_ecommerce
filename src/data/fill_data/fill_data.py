@@ -4,13 +4,13 @@
 Lógica de execução:
 Tabelas:
     sales_data views:
-[v]    1) rankear produtos que mais venderam (quantidade e receita) por categoria
+[]    1) rankear produtos que mais venderam (quantidade e receita) por categoria
 []    2) rankear categorias que mais venderam por país (consertar deixar a maior categoria por cada país, está dando todas as categorias)
-[v]    3) rankear períodos do ano que mais venderam
-[v]    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
-[v]    5) calcular ltv médio por cliente
-[v]    6) calcular ticket médio por cliente
-[x]    7) RFM clientes -------COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS E CONSERTAR PARÂMETROS (MÉDIA 414 DIAS)
+[]    3) rankear períodos do ano que mais venderam
+[]    4) rankear faixa de idade de clientes que mais geraram receita e categorias por faixa de idade
+[]    5) calcular ltv médio por cliente
+[]    6) calcular ticket médio por cliente
+[]    7) RFM clientes -------COLOCAR PESO NOS CLIENTS PARA AVALIAR CHURNS E CONSERTAR PARÂMETROS (MÉDIA 414 DIAS)
 []     8) Teste da 2.
         📊 Dashboard 1 — Vendas & Produtos (foco em performance)
 
@@ -32,8 +32,8 @@ Tabelas:
     Tabela com calculo de ROAS e CAC
     Views:
     - Plataformma:
-[v]        - 1) maior taxa de conversão média, CPC médio, CTR médio, ROAS médio, maior impressão x taxa de conversões e ROI por plataforma.
-[v]        - 2) custo total e CPA por plataforma
+[]        - 1) maior taxa de conversão média, CPC médio, CTR médio, ROAS médio, maior impressão x taxa de conversões e ROI por plataforma.
+[]        - 2) custo total e CPA por plataforma
 
     
     - Idade:
@@ -42,8 +42,8 @@ Tabelas:
 
 
     - País:
-[v]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por país ---- Ver qual é o país nulo.
-[v]        - 2) custo total e CPA por país
+[]        - 1) maior taxa de conversão média, cpc médio, ctr médio, ROAS, teve mais impressões x taxa de conversões e ROI por país ---- Ver qual é o país nulo.
+[]        - 2) custo total e CPA por país
 
 
 
@@ -64,4 +64,10 @@ Tabelas:
 
 DAR CAST EM TODAS AS COLUNAS DA SILVER PRA PRESERVAR O TIPO DE DADO
 CRIAR AMAZON RDS A PARTIR DE UM TERRAFORM
+
+
+ESTOUROU O BANCO RENDER, INDO CRIAR UM NO AMAZON RDS:
+
+meu dbt está vinculado eo meu banco render, ver como vincular a amazon rds
+
 """

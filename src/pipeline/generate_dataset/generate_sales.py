@@ -66,8 +66,8 @@ if __name__ == "__main__":
         for i in range(num_orders):
             order_id += 1
             product_id = random.choices(products_df['product_id'].tolist(), weights=choices_weights_products, k=1)[0] # Pega um produto aleatório com peso.           
-            #client_id = random.choices(client_df['client_id'].tolist(), weights=choices_weights_clients, k=1)[0]  # Clients com peso            
-            client_id = random.choice(client_df['client_id'].tolist())  # Clients sem peso
+            client_id = random.choices(client_df['client_id'].tolist(), weights=choices_weights_clients, k=1)[0]  # Clients com peso            
+            #client_id = random.choice(client_df['client_id'].tolist())  # Clients sem peso
             product = products_df[products_df['product_id'] == product_id].iloc[0]['product_name']
 
             order = generate_fake_order_data(order_id, date, product, product_id, client_id)
