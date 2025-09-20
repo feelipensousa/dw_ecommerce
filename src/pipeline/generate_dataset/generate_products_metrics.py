@@ -53,14 +53,13 @@ def generate_products_metrics_data(base_metrics_df: pd.DataFrame, products_df: p
         daily_sample['impressions'] = daily_sample['impressions'].apply(
             lambda x: int(max(0, x * random.gauss(1, 0.25))) if pd.notnull(x) else 0)  # ±25% de variação
         
-        daily_sample['clicks'] = daily_sample['clicks'].apply(
-            lambda x: int(max(0, x * random.gauss(1, 0.20))) if pd.notnull(x) else 0)  # ±20% de variação
-        
-        daily_sample['leads'] = daily_sample['leads'].apply(
-            lambda x: int(max(0, x * random.gauss(1, 0.30))) if pd.notnull(x) else 0)  # ±30% de variação
-        
-        daily_sample['conversions'] = daily_sample['conversions'].apply(
-            lambda x: int(max(0, x * random.gauss(1, 0.35))) if pd.notnull(x) else 0)  # ±35% de variação
+        # Dependem de impressions para existirem
+        daily_sample['clicks'] = daily_sample.apply(
+            lambda row: int(max(0, row['clicks'] * random.gauss(1, 0.20))) if pd.notnull(row['clicks']) and row['clicks'] <= row['impressions'] else int(row['impressions'] * random.gauss(0.1, 0.1)) if row['impressions'] > 0 else 0, axis=1)
+        daily_sample['leads'] = daily_sample.apply(
+            lambda row: int(max(0, row['leads'] * random.gauss(1, 0.30))) if pd.notnull(row['leads']) and row['leads'] <= row['clicks'] else int(row['clicks'] * random.gauss(0.1, 0.1)) if row['clicks'] > 0 else 0, axis=1)
+        daily_sample['conversions'] = daily_sample.apply(
+            lambda row: int(max(0, row['conversions'] * random.gauss(1, 0.35))) if pd.notnull(row['conversions']) and row['conversions'] <= row['leads'] else int(row['leads'] * random.gauss(0.1, 0.1)) if row['leads'] > 0 else 0, axis=1)
         
         daily_sample['cost'] = (
             daily_sample['cost'].astype(str).str.replace('$', '').str.replace(',', ''))

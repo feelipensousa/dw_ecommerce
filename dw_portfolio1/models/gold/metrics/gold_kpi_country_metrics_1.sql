@@ -41,4 +41,5 @@ SELECT
     (total_revenue - total_cost) / NULLIF(total_cost, 0) AS roi,
     total_conversions / NULLIF(total_clicks, 0) AS conversion_rate
 FROM agg_by_country
+WHERE country IS NOT NULL
 ORDER BY roas DESC
