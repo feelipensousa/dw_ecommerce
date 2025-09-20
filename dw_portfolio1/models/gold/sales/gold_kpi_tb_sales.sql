@@ -34,9 +34,10 @@ joined AS (
         s.order_id,
         s.order_date,
         CASE 
-            WHEN d.month_num BETWEEN 1 AND 4 THEN '1º Trimestre'
-            WHEN d.month_num BETWEEN 5 AND 8 THEN '2º Trimestre'
-            WHEN d.month_num BETWEEN 9 AND 12 THEN '3º Trimestre'
+            WHEN d.month_num BETWEEN 1 AND 3 THEN '1º Trimestre'
+            WHEN d.month_num BETWEEN 4 AND 6 THEN '2º Trimestre'
+            WHEN d.month_num BETWEEN 7 AND 9 THEN '3º Trimestre'
+            WHEN d.month_num BETWEEN 10 AND 12 THEN '4º Trimestre'
         END AS trimester,
         s.product_id,
         s.product,

@@ -18,8 +18,11 @@ ltv AS (
         client_id,
         full_name,
         total_amount_spent,
-        EXTRACT(YEAR FROM age(last_purchase, first_purchase)) * 12 
-          + EXTRACT(MONTH FROM age(last_purchase, first_purchase)) AS months_active
+        GREATEST(
+            EXTRACT(YEAR FROM age(last_purchase, first_purchase)) * 12 
+            + EXTRACT(MONTH FROM age(last_purchase, first_purchase)), 
+            1
+        ) AS months_active
     FROM source
 )
 SELECT

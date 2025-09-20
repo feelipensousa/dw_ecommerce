@@ -32,6 +32,9 @@ agg_by_country AS (
 
 SELECT
     country,
+    total_revenue,
+    total_cost,
+    total_cost / NULLIF(total_conversions, 0) AS cpa,
     total_clicks / NULLIF(total_impressions, 0) AS ctr,
     total_cost / NULLIF(total_clicks, 0) AS cpc,
     total_revenue / NULLIF(total_cost, 0) AS roas,
