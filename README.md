@@ -17,7 +17,7 @@
 
 Este projeto tem como objetivo a construção de um pipeline de dados completo, desde a geração dos dados brutos até a criação de uma arquitetura medalhão destinada a análises e criação de um dashboard de e-commerce. O objetivo é simular um cenário de negócio real, onde dados de vendas e marketing são unificados para responder a perguntas estratégicas para a melhoria do negócio.
 
-
+![project](images/Projeto.png)
 
 ## 2.Tecnologias Utilizadas
 
