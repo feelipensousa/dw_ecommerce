@@ -68,6 +68,8 @@ A camada `gold` foi projetada com views e tabelas agregadas para responder a per
 
 Não possui bronze pois os dados foram gerados e transformados diretamente no Python e já carregados na silver do dbt.
 
+![arquitetura_medalhao](images/dbt_arquitetura.png)
+
 ## 5.Como Clonar e Executar o Projeto
 **em processo**
 ## 6.Conclusão e Próximos Passos

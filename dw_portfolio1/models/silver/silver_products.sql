@@ -4,7 +4,7 @@ WITH source AS (
         product_name,
         category,
         unit_price
-    FROM {{ source('db_ecommerce_k53u', 'Products') }}        
+    FROM {{ source('dwecommerce01', 'Products') }}        
 ),
 
 silver_products AS (

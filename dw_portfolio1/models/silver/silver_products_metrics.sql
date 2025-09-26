@@ -11,7 +11,7 @@ with source as (
         product_id,
         platform,
         ad_date
-    FROM {{ source('db_ecommerce_k53u', 'Products_Metrics') }}
+    FROM {{ source('dwecommerce01', 'Products_Metrics') }}
 ),
 
 silver_metrics as (

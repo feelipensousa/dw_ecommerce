@@ -7,7 +7,7 @@ with source as (
         cpf,
         age,
         country
-    FROM {{ source ('db_ecommerce_k53u', 'Clients') }}        
+    FROM {{ source ('dwecommerce01', 'Clients') }}        
 ),
 
 silver_clients as (

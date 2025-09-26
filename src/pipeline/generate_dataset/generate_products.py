@@ -27,3 +27,4 @@ def generate_products(file_path: str) -> pd.DataFrame:
 if __name__ == "__main__":
     produtos = generate_products(file_path="src/data/base_products.csv")
     produtos.to_csv('src/data/Products.csv', index=False)
+    print("Dados salvo com sucesso.")

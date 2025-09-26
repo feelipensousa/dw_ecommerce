@@ -34,3 +34,11 @@ models:
     # Config indicated by + and applies to all files under models/example/
     silver:
       +materialized: table
+      +docs:
+        node_color: "#c0c0c0"  # Cor prata para a silver
+    gold:
+      +materialized: table
+      +docs:
+        node_color: "#e6b530"  # Cor ouro para a camada gold
+
+          

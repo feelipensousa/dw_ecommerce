@@ -7,14 +7,14 @@ with source as (
         product,
         product_id,
         client_id
-    FROM {{ source ('db_ecommerce_k53u', 'Sales_Data') }}        
+    FROM {{ source ('dwecommerce01', 'Sales_Data') }}        
 ),
 
 products as (
     SELECT
         product_id,
         unit_price
-    FROM {{ source ('db_ecommerce_k53u', 'Products') }}
+    FROM {{ source ('dwecommerce01', 'Products') }}
 ),
 
 joined as (

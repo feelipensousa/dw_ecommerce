@@ -2,7 +2,7 @@
 version: 2
 
 sources:
-  - name: db_ecommerce_k53u # ver se é esse e nã0 o nome das tabelas da silver
+  - name: dwecommerce01 # ver se é esse e nã0 o nome das tabelas da silver
     schema: public
     tables:
 
