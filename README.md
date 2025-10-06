@@ -1,6 +1,9 @@
 # Pipeline ETL para Análise de Vendas e Métricas de Marketing de E-commerce
 
-### **Em processo de construção...**
+### Links:
+**Dashboard no PowerBI**: [Link](https://app.powerbi.com/view?r=eyJrIjoiNjBiOGQ5NjMtYzgzMy00MzMyLTkyMGMtNGFlOGE3ZWY1ODE0IiwidCI6ImI1OTFhZTU0LTMzYzItNDU4OS1iZTY2LTkwMjFhNDE5NmM3YyJ9)
+
+**Link documentação dbt**: [Link]()
 
 ## Divisão do ReadME:
 1. Overview;
@@ -78,3 +81,4 @@ Não possui bronze pois os dados foram gerados e transformados diretamente no Py
 Este projeto embora  tente simular um cenário real de e-commerce, possui algumas limitações que devem ser consideradas:
 * **Dados Fictícios**: A geração de dados fictícios retrata 100% com precisão as variações presentes em dados reais, quanto em grupos de idade ou de vendas, o que afetou a precisão das análises. Sendo o objetivo principal ter a consrução do projeto para servir de modelo e referência para a tratativa em casos reais.
 * **Escalabilidade**: O projeto foi desenvolvido com um banco de dados open source, para um conjunto de dados relativamente pequeno. Em cenários de produção, com grandes volumes de dados, seria necessário considerar aspectos como particionamento, indexação e otimização de consultas.
+* **Faturamento**: Estamos considerando na análise que o valor de faturamento de vendas está totalmente atrelado ao valor gasto em marketing, o que pode não refletir a realidade de todos os negócios.
