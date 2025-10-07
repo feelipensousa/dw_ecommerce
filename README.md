@@ -26,7 +26,7 @@ Este projeto tem como objetivo a construção de um pipeline de dados completo, 
 * **Python**: foi utilizada para carregar as tabelas existentes, geração dos dados fictícios, transformação das tabelas para o cálculo das métricas e para carregar no banco de dados.
 * **PostgreSQL**: Servindo como o **Data Warehouse**, onde os dados são armazenados e consultados.
 * **dbt (data build tool)**: O dbt foi utilizado para criar a arquitetura Medalhão, garantindo a qualidade dos dados, a documentação e o cálculo dos KPIs pedidos, sendo ela a ferramenta principal para a transformação dos dados.
-* **Power BI/Looker Studio**: Ferramenta de construção e visualização dos dashboards.
+* **Power BI**: Ferramenta de construção e visualização dos dashboards.
 
 ## 3.Problema e Como Foi Executado
 O problema do problema consistiu em, a partir de duas bases de dados de vendas e marketing do Kaggle gerar uma base de dados fictícia que simulasse um cenário real de e-commerce (Clients, Products, Sale_Data, Products_Metrics), unificando, tratando os dados e agrupando as tabelas dimensões para obter as informações de vendas e marketing para obter as métricas de negócio.
