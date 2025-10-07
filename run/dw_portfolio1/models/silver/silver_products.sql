@@ -1,0 +1,31 @@
+
+  
+    
+
+  create  table "dwecommerce01"."public"."silver_products__dbt_tmp"
+  
+  
+    as
+  
+  (
+    WITH source AS (
+    SELECT
+        product_id,
+        product_name,
+        category,
+        unit_price
+    FROM "dwecommerce01"."public"."Products"        
+),
+
+silver_products AS (
+    SELECT
+        product_id,
+        INITCAP(product_name) AS product_name,
+        INITCAP(category) AS category,
+        unit_price
+    FROM source
+)
+
+SELECT * FROM silver_products
+  );
+  

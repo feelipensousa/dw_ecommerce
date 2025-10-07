@@ -1,0 +1,48 @@
+with source as (
+    SELECT
+        order_id,
+        quantity,
+        order_date,
+        order_country,
+        product,
+        product_id,
+        client_id
+    FROM "dwecommerce01"."public"."Sales_Data"        
+),
+
+products as (
+    SELECT
+        product_id,
+        unit_price
+    FROM "dwecommerce01"."public"."Products"
+),
+
+joined as (
+    SELECT
+        s.*,
+        p.unit_price
+    FROM source s
+    LEFT JOIN products p ON s.product_id = p.product_id
+),
+
+silver_sales as ( -- Adicionamos a coluna revenue e renomeamos os países
+    SELECT
+        order_id,
+        quantity,
+        unit_price,
+        quantity * unit_price as revenue,
+        order_date,
+        CASE
+            WHEN order_country = 'European Community' THEN 'Estonia'
+            WHEN order_country = 'RSA' THEN 'South Africa'
+            WHEN order_country = 'EIRE' THEN 'Ireland'
+            WHEN order_country = 'USA' THEN 'United States of America'
+            ELSE order_country
+        END as order_country,
+        product,
+        product_id,
+        client_id
+    FROM joined
+)
+
+SELECT * FROM silver_sales
