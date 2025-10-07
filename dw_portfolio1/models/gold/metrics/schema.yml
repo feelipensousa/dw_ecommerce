@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: gold_kpi_tb_metrics
+    description: "Tabela base para as métricas de marketing. Esta tabela é um espelho da camada silver e serve de base para as views de análise."
+    columns:
+      - name: ad_id
+        description: "Identificador único do anúncio."
+      - name: clicks
+        description: "Clicks no anúncio."
+      - name: impressions
+        description: "Impressões do anúncio."
+      - name: cost
+        description: "Custo do anúncio."
+      - name: leads
+        description: "Possíveis clientes."
+      - name: conversions
+        description: "Conversões do anúncio."
+      - name: conversion_rate
+        description: "Taxa de conversão (conversions / clicks)."
+      - name: device
+        description: "Dispositivo em que o anúncio apareceu."
+      - name: product_id
+        description: "Identificador único do produto."
+      - name: platform
+        description: "Plataforma em que foi divulgado o anúncio."
+      - name: ad_date
+        description: "Data do anúncio."
+
+  - name: gold_kpi_age_metrics_1
+    description: "View que agrega as métricas de marketing e vendas por faixa etária (age_range)."
+    columns:
+      - name: age_range
+        description: "A faixa etária do cliente."
+      - name: total_revenue
+        description: "A receita total gerada."
+      - name: total_cost
+        description: "O custo total de marketing."
+      - name: cpa
+        description: "Custo por aquisição (CPA) por faixa etária."
+      - name: ctr
+        description: "Taxa de cliques (CTR) por faixa etária."
+      - name: cpc
+        description: "Custo por clique (CPC) por faixa etária."
+      - name: roas
+        description: "Retorno sobre o gasto com anúncios (ROAS) por faixa etária."
+      - name: roi
+        description: "Retorno sobre o investimento (ROI) por faixa etária."
+      - name: conversion_rate
+        description: "Taxa de conversão por faixa etária."
+
+  - name: gold_kpi_country_metrics_1
+    description: "View que agrega as métricas de marketing e vendas por país."
+    columns:
+      - name: country
+        description: "O país onde o pedido foi realizado."
+      - name: total_revenue
+        description: "A receita total gerada."
+      - name: total_cost
+        description: "O custo total de marketing."
+      - name: cpa
+        description: "Custo por aquisição (CPA) por país."
+      - name: ctr
+        description: "Taxa de cliques (CTR) por país."
+      - name: cpc
+        description: "Custo por clique (CPC) por país."
+      - name: roas
+        description: "Retorno sobre o gasto com anúncios (ROAS) por país."
+      - name: roi
+        description: "Retorno sobre o investimento (ROI) por país."
+      - name: conversion_rate
+        description: "Taxa de conversão por país."
+
+  - name: gold_kpi_pltfrm_metrics_1
+    description: "View que agrega as métricas de marketing e vendas por plataforma."
+    columns:
+      - name: platform
+        description: "A plataforma de marketing."
+      - name: total_revenue
+        description: "A receita total gerada."
+      - name: total_cost
+        description: "O custo total de marketing."
+      - name: cpa
+        description: "Custo por aquisição (CPA) por plataforma."
+      - name: ctr
+        description: "Taxa de cliques (CTR) por plataforma."
+      - name: cpc
+        description: "Custo por clique (CPC) por plataforma."
+      - name: roas
+        description: "Retorno sobre o gasto com anúncios (ROAS) por plataforma."
+      - name: roi
+        description: "Retorno sobre o investimento (ROI) por plataforma."
+      - name: conversion_rate
+        description: "Taxa de conversão por plataforma."

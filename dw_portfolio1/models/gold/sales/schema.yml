@@ -1,0 +1,140 @@
+version: 2
+
+models:
+  - name: gold_kpi_tb_sales
+    description: "Tabela de fato central que contém todas as transações de vendas, enriquecidas com dados de clientes e produtos. Serve de base para todas as views de análise de vendas."
+    columns:
+      - name: order_id
+        description: "Identificador único do pedido."
+        tests:
+          - unique
+          - not_null
+      - name: order_date
+        description: "Data do pedido."
+      - name: trimester
+        description: "Trimestre do ano."
+      - name: product_id
+        description: "ID do produto vendido."
+      - name: product
+        description: "Nome do produto (da tabela silver_sales)."
+      - name: quantity
+        description: "Quantidade de itens vendidos no pedido."
+      - name: unit_price
+        description: "Preço unitário no momento da venda."
+      - name: revenue
+        description: "Receita total do item no pedido."
+      - name: order_country
+        description: "País onde o pedido foi realizado."
+      - name: client_id
+        description: "ID do cliente que fez o pedido."
+      - name: full_name
+        description: "Nome completo do cliente."
+      - name: client_country
+        description: "País de residência do cliente."
+      - name: age
+        description: "Idade do cliente."
+      - name: age_range
+        description: "Faixa etária do cliente."
+      - name: category
+        description: "Categoria do produto."
+
+  - name: gold_kpi_sales_7
+    description: "View para análise de segmentação RFM (Recência, Frequência, Monetário) dos clientes."
+    columns:
+      - name: client_id
+        description: "ID do cliente."
+        tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: "Nome completo do cliente."
+      - name: amount_client_spent
+        description: "Valor total gasto pelo cliente."
+      - name: monthly_frequency
+        description: "Frequência de compra mensal do cliente."
+      - name: days_since_last_purchase
+        description: "Número de dias desde a última compra."
+      - name: segmento_rfm
+        description: "Segmento RFM do cliente (ex: Campeão, Fiel, Potencial)."
+        tests:
+          - accepted_values:
+              values: ['Campeão', 'Cliente Fiel', 'Potencial', 'Em Observação', 'Em Risco de Churn', 'Inativo']
+
+  - name: gold_kpi_sales_6
+    description: "View para calcular o ticket médio por cliente."
+    columns:
+      - name: avg_ticket_per_client
+        description: "Ticket médio de cada cliente."
+
+  - name: gold_kpi_sales_5
+    description: "View para análise do Lifetime Value (LTV) e segmentação de clientes por valor."
+    columns:
+      - name: client_id
+        description: "ID do cliente."
+        tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: "Nome completo do cliente."
+      - name: total_amount_spent
+        description: "Valor total gasto pelo cliente."
+      - name: ltv_category
+        description: "Segmento de valor do cliente (Alto, Médio, Baixo)."
+      - name: avg_monthly_ltv
+        description: "LTV médio por mês de atividade do cliente."
+
+  - name: gold_kpi_sales_4
+    description: "View que ranqueia as categorias que mais geraram receita por faixa etária."
+    columns:
+      - name: age_range
+        description: "Faixa etária do cliente."
+      - name: category
+        description: "Categoria do produto."
+      - name: total_amount_spent
+        description: "Valor total gasto."
+      - name: value_rank
+        description: "Ranking da categoria por valor gasto na faixa etária."
+
+  - name: gold_kpi_sales_3
+    description: "View que agrega o desempenho de vendas por trimestre do ano."
+    columns:
+      - name: trimester
+        description: "Trimestre do ano."
+      - name: total_revenue
+        description: "Receita total no trimestre."
+      - name: total_orders
+        description: "Número total de pedidos no trimestre."
+      - name: total_quantity
+        description: "Quantidade total de itens vendidos no trimestre."
+
+  - name: gold_kpi_sales_2
+    description: "View que identifica a categoria de produto que mais vendeu (em receita e quantidade) por país."
+    columns:
+      - name: order_country
+        description: "País da venda."
+      - name: top_category_revenue
+        description: "Nome da categoria que mais gerou receita no país."
+      - name: total_revenue
+        description: "Receita total da categoria."
+      - name: top_category_quantity
+        description: "Nome da categoria que mais vendeu em quantidade no país."
+      - name: top_quantity
+        description: "Quantidade total da categoria."
+      - name: revenue_of_top_quantity
+        description: "Receita da categoria que mais vendeu em quantidade."
+
+  - name: gold_kpi_sales_1
+    description: "View que ranqueia os produtos por receita e quantidade vendida, com suas categorias."
+    columns:
+      - name: product
+        description: "Nome do produto."
+      - name: category
+        description: "Categoria do produto."
+      - name: total_revenue
+        description: "Receita total do produto."
+      - name: total_quantity
+        description: "Quantidade total vendida do produto."
+      - name: rank_revenue
+        description: "Ranking do produto por receita."
+      - name: rank_quantity
+        description: "Ranking do produto por quantidade."

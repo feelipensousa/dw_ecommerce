@@ -17,6 +17,7 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+docs-paths: ["docs"]  # Documentação
 
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
@@ -40,5 +41,6 @@ models:
       +materialized: table
       +docs:
         node_color: "#e6b530"  # Cor ouro para a camada gold
+
 
           
