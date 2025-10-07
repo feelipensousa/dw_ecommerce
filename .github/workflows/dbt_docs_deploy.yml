@@ -26,9 +26,9 @@ jobs:
         mkdir -p ~/.dbt
         echo "
         dw_portfolio1:
-          target: prod
+          target: dev
           outputs:
-            prod:
+            dev:
               type: postgres
               host: ${{ secrets.DB_HOST_PROD }}
               port: ${{ secrets.DB_PORT_PROD }}
