@@ -3,7 +3,7 @@
 ### Links:
 **Dashboard no PowerBI**: [Link](https://app.powerbi.com/view?r=eyJrIjoiNjBiOGQ5NjMtYzgzMy00MzMyLTkyMGMtNGFlOGE3ZWY1ODE0IiwidCI6ImI1OTFhZTU0LTMzYzItNDU4OS1iZTY2LTkwMjFhNDE5NmM3YyJ9)
 
-**Link documentação dbt**: [Link]()
+**Link documentação dbt**: [Link](https://feelipensousa.github.io/dw_ecommerce/#!/overview)
 
 ## Divisão do ReadME:
 1. Overview;
